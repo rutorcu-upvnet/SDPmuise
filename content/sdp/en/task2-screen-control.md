@@ -13,7 +13,7 @@ prev > [[sdp/en/task1-sequential-systems|Task 1 - Design of sequential systems]]
 
 This task lays the foundations for designing a **synchronism generator** that drives the display on a screen. Before tackling the proposed designs, study the information on this page.
 
-<iframe src="../../static/animaciones/control-pantalla/objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/control-pantalla/objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ## Goals
 
@@ -70,7 +70,7 @@ The fact that the dot clock must quickly return from right to left to start a ne
 
 In parallel there are three digital signals, **RGB**, that carry the intensity of each primary colour for each pixel. They must hold a valid value while the dot clock is inside the visible area, and that value is the colour of the pixel the dot clock is on. The RGB signals must therefore change **synchronously** with the movement of the dot clock, i.e. with the same clock that moves it.
 
-<iframe src="../../static/animaciones/control-pantalla/funcionamiento-de-la-visualizacion/Pantalla_ver13.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/control-pantalla/funcionamiento-de-la-visualizacion/Pantalla_ver13.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 The animation emulates the screen scan: it shows how the dot clock moves and how the horizontal and vertical sync pulses are generated. It is, of course, much slower than reality so that you can see the dot, since a stable image requires the dot to scan the whole screen in about 20 ms.
 
@@ -118,7 +118,7 @@ The table gives the vertical timing values for 800 × 480 pixels. They are expre
 
 ## Structure of the task
 
-<iframe src="../../static/animaciones/control-pantalla/estructura-de-la-tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/control-pantalla/estructura-de-la-tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 The lab consists of designing a system that controls and displays images on a screen. A touchscreen has been chosen, which can report the coordinates of the touch point, but this lab only deals with the display.
 
@@ -147,7 +147,7 @@ The visible area starts at coordinate **(216, 35)** and ends at **(1015, 514)**;
 
 The block diagram in the image is a suggested starting point.
 
-<iframe src="../../static/animaciones/control-pantalla/propuesta-estructura-diseno/Diagrama_bloques_ver20.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/control-pantalla/propuesta-estructura-diseno/Diagrama_bloques_ver20.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 - At the top left there is a clock manager or **PLL**, which generates from the external 50 MHz oscillator the **25 MHz** clock needed by the screen (**NCLK**). The rest of the design must run on this 25 MHz clock.
 - In the centre is the **modulo-1056** counter (**HCOUNT**), which counts horizontal pixels, i.e. the column. It increments on each rising edge of the 25 MHz clock and wraps to zero after 1055. Its terminal count output **TC** goes active when the count is 1055 and is also used to generate the horizontal sync.
@@ -169,7 +169,7 @@ The internal PLLs are generated and configured with the Quartus **IP Catalog** t
 
 The **How to create a PLL** animation shows step by step which parameters and options to set to obtain a 25 MHz clock from a 50 MHz one. The starting point is the Quartus project containing your design.
 
-<iframe src="../../static/animaciones/control-pantalla/subtarea-1-generacion-de-las-senales-de-sincronismo/ip_pll_ver11/IP_PLL_ver11.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/control-pantalla/subtarea-1-generacion-de-las-senales-de-sincronismo/ip_pll_ver11/IP_PLL_ver11.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 When the PLL is generated, the IP Catalog creates several files in the project directory, including **pll_ltm_inst.v**, with an instantiation example:
 
@@ -278,7 +278,7 @@ The **How to generate a ROM memory** animation shows how to generate the ROM and
 > [!danger] Warning
 > The data width and memory size shown in the animation **are not the right ones for this application**; they are for illustration only. Choose the right values according to the characteristics of the provided image.
 
-<iframe src="../../static/animaciones/control-pantalla/subtarea-3/ip_rom_img_ver11/IP_ROM_Img_ver11.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/control-pantalla/subtarea-3/ip_rom_img_ver11/IP_ROM_Img_ver11.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 When the ROM is generated, several files are created in the project directory, including **ROM_image_inst.v**, with an instantiation example:
 
@@ -306,7 +306,7 @@ A **ROM** is a set of cells holding previously stored data of a given size. To r
 
 The memory stores the characters, each **8 × 8 pixels**, with one bit per pixel indicating whether it is on or off. Its contents are initialised with a MIF or Intel-HEX file that sets the value of each cell and can be written in binary, hexadecimal, decimal or octal. The image shows the structure of the MIF for this sub-task: a memory of **8192 one-bit cells**, with addresses in decimal and data in binary to make it easier to read.
 
-<iframe src="../../static/animaciones/control-pantalla/subtarea-4/MIF_File.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/control-pantalla/subtarea-4/MIF_File.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 The file [[assets/control-pantalla/subtarea-4/char_rom-1.mif|char_rom-1.mif]] is an example of what a MIF with the character definitions looks like.
 
@@ -333,7 +333,7 @@ The block diagram in the image is a suggested structure with three blocks: **LCD
 
 The following interactive animation illustrates how CHAR_ROM and SELEC_COLOR work together:
 
-<iframe src="../../static/animaciones/control-pantalla/subtarea-4/Funcionamiento_Char_ROM_ver30.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/control-pantalla/subtarea-4/Funcionamiento_Char_ROM_ver30.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ### Using the IP Catalog to create a ROM
 
@@ -341,7 +341,7 @@ The memory stores 8 × 8 pixel characters and is initialised with the provided H
 
 The **How to generate a ROM memory** animation shows which parameters, options and settings to use to instantiate the memory for this design. The starting point is the Quartus project.
 
-<iframe src="../../static/animaciones/control-pantalla/subtarea-4/ip_rom_char_ver11/IP_ROM_Char_ver11.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/control-pantalla/subtarea-4/ip_rom_char_ver11/IP_ROM_Char_ver11.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 When the ROM is generated, the file **ROM_char_inst.v** is created, among others, with an instantiation example:
 

@@ -15,7 +15,7 @@ En esta tarea se plantean las bases para el desarrollo de la primera práctica d
 > [!warning] Test previo
 > Antes de empezar la tarea hay que realizar en PoliformaT el test sobre sintaxis de Verilog HDL, que sirve para evaluar los conocimientos previos.
 
-<iframe src="../../static/animaciones/secuenciales/objetivos/Objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/objetivos/Objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ## Objetivos
 
@@ -25,7 +25,7 @@ Se diseñarán elementos digitales en Verilog HDL, avanzando en el uso de la jer
 
 ## Estructura de la tarea
 
-<iframe src="../../static/animaciones/secuenciales/estrutura_tarea/Estructura_Tarea.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/estrutura_tarea/Estructura_Tarea.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Todo sistema secuencial está gobernado por una señal de reloj, que procede de un oscilador externo al dispositivo en el que se implementa el diseño. El oscilador de la placa DE2-115 tiene una frecuencia de **50 MHz**, es decir, un periodo de **20 ns**. Cuando se diseñan circuitos que controlan elementos de visualización, hay que tener en cuenta que el ojo humano no percibe cambios que duren menos de unos 50 ms. Por tanto, no se puede usar directamente el reloj de 50 MHz para producir cambios que deban ser visibles, como hacer parpadear un LED.
 
@@ -164,11 +164,11 @@ Se abre ModelSim-Altera y comienza la simulación descrita en el testbench. En e
 
 ModelSim-Altera tiene varias ventanas. En la parte inferior está la ventana de mensajes, donde el simulador informa, por ejemplo, de los errores detectados en los archivos Verilog HDL del diseño. Conviene revisarla, porque un error en los archivos impide cargar el proyecto y, por tanto, simular.
 
-<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_general.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_general.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 A la izquierda está el visor de jerarquía, que muestra la estructura del diseño y todos sus archivos. En la parte central superior está el visor de señales, con las señales del módulo seleccionado en la jerarquía. Estas señales se pueden añadir al visor de ondas, a la derecha, donde se muestra el resultado de la simulación. Todas las ventanas de ModelSim se pueden desacoplar y mostrar por separado, lo que es especialmente útil con el visor de ondas.
 
-<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_desacoplo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_desacoplo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Las lupas del menú superior permiten hacer zoom sobre los resultados.
 
@@ -184,11 +184,11 @@ Se puede cambiar la representación de una señal: por ejemplo, para ver el cont
 
 En la barra de menú están los botones de simulación. De izquierda a derecha: **Restart** reinicia la simulación (útil cuando se añaden señales al visor de ondas y hay que volver a simular); a continuación está la casilla con el tiempo de simulación y, a su lado, el botón **Run**, que simula durante ese tiempo; el último botón, **Stop**, detiene la simulación.
 
-<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_tiempo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_tiempo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Para repetir la simulación pulsa **Restart** y después **Run -All**: la simulación se detendrá en el `$stop` del testbench. Estas operaciones también se pueden hacer escribiendo los comandos en la ventana de mensajes. También se puede fijar un tiempo, por ejemplo 300 ns, y pulsar **Run**: la simulación se detendrá a los 300 ns, porque ese instante es anterior al `$stop`.
 
-<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_restart.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_restart.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 #### Comprobación de resultados
 

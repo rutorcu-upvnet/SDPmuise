@@ -15,7 +15,7 @@ This task lays the foundations for the first lab of the course, which deals with
 > [!warning] Preliminary test
 > Before starting the task, take the Verilog HDL syntax test in PoliformaT, which assesses your previous knowledge.
 
-<iframe src="../../static/animaciones/secuenciales/objetivos/Objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/objetivos/Objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ## Goals
 
@@ -25,7 +25,7 @@ You will design digital elements in Verilog HDL, making progress in the use of h
 
 ## Structure of the task
 
-<iframe src="../../static/animaciones/secuenciales/estrutura_tarea/Estructura_Tarea.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/estrutura_tarea/Estructura_Tarea.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Every sequential system is driven by a clock signal coming from an oscillator outside the device where the design is implemented. The oscillator on the DE2-115 board runs at **50 MHz**, i.e. a period of **20 ns**. When designing circuits that drive display elements, bear in mind that the human eye cannot perceive changes that last less than about 50 ms. Therefore, the 50 MHz clock cannot be used directly to produce changes that must be visible, such as making an LED blink.
 
@@ -164,11 +164,11 @@ ModelSim-Altera opens and runs the simulation described in the testbench. Here i
 
 ModelSim-Altera has several windows. At the bottom is the message window, where the simulator reports, for instance, errors found in the design's Verilog HDL files. Keep an eye on it: an error in the files prevents the project from loading and therefore from being simulated.
 
-<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_general.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_general.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 On the left is the hierarchy viewer, which shows the structure of the design and all its files. In the upper centre is the signal viewer, with the signals of the module selected in the hierarchy. These signals can be added to the wave viewer on the right, which shows the simulation result. Every ModelSim window can be undocked and displayed on its own, which is especially handy for the wave viewer.
 
-<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_desacoplo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_desacoplo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 The magnifying glasses in the top menu let you zoom into the results.
 
@@ -184,11 +184,11 @@ You can change how a signal is displayed: for example, to see the counter in uns
 
 The simulation buttons are in the menu bar. From left to right: **Restart** resets the simulation (useful after adding signals to the wave viewer, when you need to simulate again); next comes the box with the simulation time and, beside it, the **Run** button, which simulates for that time; the last button, **Stop**, halts the simulation.
 
-<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_tiempo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_tiempo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 To repeat the simulation, click **Restart** and then **Run -All**: the simulation will stop at the testbench's `$stop`. You can also do this by typing the commands in the message window. Alternatively, set a time such as 300 ns and click **Run**: the simulation stops at 300 ns, because that instant comes before the `$stop`.
 
-<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_restart.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_restart.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 #### Checking the results
 

@@ -16,7 +16,7 @@ In this task you design a **serial communication interface** to talk to a touchs
 > [!warning] Preliminary test
 > Before tackling the designs, study the information on this page and answer the corresponding test in PoliformaT.
 
-<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/diseno-de-una-comunicacion-serie/objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ## Goals
 
@@ -71,7 +71,7 @@ ADC_DIN must stay low when it is not being used to send the command. Also, despi
 
 ## Outline of the task
 
-<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/estructura-de-la-tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/diseno-de-una-comunicacion-serie/estructura-de-la-tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 The lab consists of designing a serial communication interface. Here it is applied to a touchscreen: the design must control the ADC that captures where a pointer or a finger has been placed.
 
@@ -110,13 +110,13 @@ Obtaining both coordinates requires two consecutive transmit/receive sequences. 
 
 In the diagram, the request for the Y coordinate starts while the X coordinate is still being received. This is possible because the transmit and receive lines are independent, and it takes advantage of the ADC's waiting time. The complete sequence for both coordinates therefore lasts only **80 half-periods**.
 
-<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/sugerencia-concatenacion/Temporizacion_Tactil01.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/diseno-de-una-comunicacion-serie/sugerencia-concatenacion/Temporizacion_Tactil01.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ### Proposed design structure
 
 Based on concatenating the two sequences, the following block diagram can be used as a starting point. All blocks use the 50 MHz clock and the reset signal.
 
-<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/propuesta-estructura-diseno/diagrama_bloques_bi/Diagrama_bloques_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/diseno-de-una-comunicacion-serie/propuesta-estructura-diseno/diagrama_bloques_bi/Diagrama_bloques_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 - On the left, a counter with modulus **ADC_DCLK_CNT** (a parameter) that sets the transmission speed between 10 kbps and 2 Mbps. Besides the terminal count (TC), it generates a signal that goes active at **half count** (TC/2).
 - In the centre, the **modulo-80** counter, the reference for the 80 half-periods of the complete sequence.
@@ -153,7 +153,7 @@ To make this easier, the Quartus project [[assets/diseno-de-una-comunicacion-ser
 
 The verification environment in Touch_alumno.qar has the structure shown in the image. The testbench **tb_Touch_Control.v** is a structural description that connects the block under verification, **ADC_CONTROL.v**, to the screen emulator, **EMULE_ADC.vo**. Both are wrapped by **MFB.v**.
 
-<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/verificacion-del-diseno/diagrama_verificacion_bi/Diagrama_verificacion_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/diseno-de-una-comunicacion-serie/verificacion-del-diseno/diagrama_verificacion_bi/Diagrama_verificacion_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 MFB generates the clock and reset. It then simulates a touch: it gives X and Y coordinates to the emulator and activates **NEW_COORD** to start the emulation. The emulator drives ADC_PENIRQ_n low, to which ADC_CONTROL must respond by starting the protocol; the emulator then sends it the coordinates provided by MFB.
 
@@ -244,7 +244,7 @@ Once the serial communication has been checked, finish the verification by check
 1. **The communication speed.** It can be between 10 kbps and 2 Mbps; in the proposed design it is set by the **ADC_DCLK_CNT** parameter, initially at about 70 kbps. Changing it can minimise the effect, although it may not be enough and you may need to combine it with the next adjustment.
 2. **A pause between two consecutive acquisitions**, so that the ADC does not convert continuously. When the screen is touched the coordinates are acquired, and no new communication takes place until at least **half a second** has passed, even if the finger is still on the screen. This means fewer readings and avoids the wrong ones. The drawback is that the design must be slightly modified to add an element that generates this wait, of half a second or an adjustable value.
 
-<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/verificacion-y-mejora-del-diseno/diagrama_bloques_mejora_bi/Diagrama_bloques_mejora_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/diseno-de-una-comunicacion-serie/verificacion-y-mejora-del-diseno/diagrama_bloques_mejora_bi/Diagrama_bloques_mejora_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 To reduce the number of readings, the proposal is to add a **modulo-25,000,000** counter, which with the 50 MHz clock introduces a half-second delay between one reading and the next. It is at the bottom left of the new block diagram.
 

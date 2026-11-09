@@ -5,7 +5,7 @@ tags:
   - herramientas
 ---
 
-prev > [[Instalación de Quartus]]
+prev > [[sdp/es/instalacion-quartus|Instalación de Quartus]]
 
 *Por Ricardo José Colom Palero*
 
@@ -16,12 +16,12 @@ Sin embargo, Quartus incluye una utilidad que empaqueta el proyecto en un único
 ## Procedimiento
 
 1. En el menú de Quartus selecciona **Project > Archive Project**. Se abre la ventana **Archive Project**:
-   ![[assets/Generar QAR/Imagen009.jpg]]
+   ![[assets/generar-qar/imagen009.jpg]]
 2. Escribe un nombre para el archivo en el campo **Archive file name**.
 3. Pulsa **Advanced...** para abrir la ventana que permite personalizar los archivos que se incluirán:
-   ![[assets/Generar QAR/Imagen012.jpg]]
+   ![[assets/generar-qar/imagen012.jpg]]
 4. En **File set** selecciona la configuración predefinida **Service request**:
-   ![[assets/Generar QAR/Imagen011.jpg]]
+   ![[assets/generar-qar/imagen011.jpg]]
 5. Pulsa **OK** para volver a la ventana **Archive Project**.
 6. Pulsa **Archive**. Se crea el archivo con el nombre indicado y extensión **.qar**, que contiene los archivos del proyecto. Se guarda en el directorio del proyecto, salvo que se haya indicado otra ubicación.
 
@@ -32,4 +32,4 @@ Una vez generado el **.qar**, conviene comprobar su contenido descomprimiéndolo
 > [!danger] No lo descomprimas en la carpeta del proyecto original
 > Copia el archivo **.qar** a otra carpeta y haz doble clic sobre él: Quartus se abrirá, desempaquetará el proyecto en una carpeta llamada `nombre_proyecto_restored` y lo abrirá.
 
-next > [[Tarea 1 - Diseño de sistemas secuenciales]]
+next > [[sdp/es/tarea1-sistemas-secuenciales|Tarea 1 - Diseño de sistemas secuenciales]]

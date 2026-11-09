@@ -6,7 +6,7 @@ tags:
   - sequential
 ---
 
-prev > [[Creating a QAR archive]]
+prev > [[sdp/en/qar-archive|Creating a QAR archive]]
 
 *By Ricardo José Colom Palero*
 
@@ -15,7 +15,7 @@ This task lays the foundations for the first lab of the course, which deals with
 > [!warning] Preliminary test
 > Before starting the task, take the Verilog HDL syntax test in PoliformaT, which assesses your previous knowledge.
 
-<iframe src="/static/animaciones/Secuenciales/Objetivos/Objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/objetivos/Objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ## Goals
 
@@ -25,7 +25,7 @@ You will design digital elements in Verilog HDL, making progress in the use of h
 
 ## Structure of the task
 
-<iframe src="/static/animaciones/Secuenciales/Estrutura_Tarea/Estructura_Tarea.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/estrutura_tarea/Estructura_Tarea.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Every sequential system is driven by a clock signal coming from an oscillator outside the device where the design is implemented. The oscillator on the DE2-115 board runs at **50 MHz**, i.e. a period of **20 ns**. When designing circuits that drive display elements, bear in mind that the human eye cannot perceive changes that last less than about 50 ms. Therefore, the 50 MHz clock cannot be used directly to produce changes that must be visible, such as making an LED blink.
 
@@ -39,7 +39,7 @@ The lab is divided into three subtasks:
 
 ## Subtask 1: Design of a parameterisable counter
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen02.png]]
+![[assets/secuenciales/estrutura_tarea/imagen02.png]]
 
 Describe in Verilog HDL a binary counter with the following specifications:
 
@@ -59,13 +59,13 @@ An efficient designer makes the most of design time, and reusing previously desi
 
 The best solution is to have **a single file** with the counter model, written in terms of a configuration parameter that is changed as needed.
 
-Sometimes the parameter must go through some arithmetic before it can be used. For example, how do you get the number of bits of the counter from its modulus? The answer is to use a function. The figure shows how to do it with the `CLogB2` function, which computes the base-2 logarithm **rounded up to the next integer**, i.e. the number of bits needed to reach the end count. `CLogB2` is defined in the maths functions file [[assets/Secuenciales/Estrutura_Tarea/MathFun.vh|MathFun.vh]], which must be included in the design.
+Sometimes the parameter must go through some arithmetic before it can be used. For example, how do you get the number of bits of the counter from its modulus? The answer is to use a function. The figure shows how to do it with the `CLogB2` function, which computes the base-2 logarithm **rounded up to the next integer**, i.e. the number of bits needed to reach the end count. `CLogB2` is defined in the maths functions file [[assets/secuenciales/estrutura_tarea/mathfun.vh|MathFun.vh]], which must be included in the design.
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen08.png]]
+![[assets/secuenciales/estrutura_tarea/imagen08.png]]
 
 ### Design verification
 
-![[assets/Control Pantalla/Verificación del Diseño/Imagen061.png]]
+![[assets/control-pantalla/verificacion-del-diseno/imagen061.png]]
 
 Once the `count` module has been described in Verilog HDL, you must verify by simulation that the counter works correctly and produces both the count value and the terminal count signal properly.
 
@@ -75,7 +75,7 @@ For this we use a professional simulator, **ModelSim-Altera**, which needs a **t
 
 Before simulating, check that the ModelSim-Altera installation path is correctly set in Quartus. In **Tools > Options…**, select **General > EDA Tool Options** in the **Category** column. In the list of tools, the ModelSim-Altera path must be `C:\intelFPGA\17.1\modelsim_ase\win32aloem` or equivalent.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2019-12-16 a las 17.25.53.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2019-12-16-a-las-17.25.53.png]]
 
 #### Writing the stimuli in Verilog HDL
 
@@ -135,73 +135,73 @@ Save it with **File > Save as...** as `tb_count.v`. This file **must not be comp
 
 Next, configure the simulation so that it finds the stimulus file. In **Assignments > Settings**, select **Simulation** in the left column:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-09-17 a las 11.53.02.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-09-17-a-las-11.53.02.png]]
 
 Click the **Test Benches...** button, halfway down on the right-hand side. A new window opens...
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-09-17 a las 11.53.11.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-09-17-a-las-11.53.11.png]]
 
 ...where you click **New** to add a new testbench, configured as in the image:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 15.28.34.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-15.28.34.png]]
 
 Go back by clicking **OK** in each window.
 
 All that remains is to launch the ModelSim-Altera simulation with **Tools > Run Simulation Tool > RTL Simulation**, which simulates the RTL code before synthesis and implementation.
 
-![[assets/Control Pantalla/Realizar la Simulacion/Imagen116.png]]
+![[assets/control-pantalla/realizar-la-simulacion/imagen116.png]]
 
 ModelSim-Altera opens and runs the simulation described in the testbench. Here it stops at the `$stop`, about 24 clock cycles after counting is enabled, so you can see the counter go from 0 up to 19 and back to 0.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 15.33.02.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-15.33.02.png]]
 
 > [!warning] Always check the *Transcript* window
 > ModelSim also reports errors when the testbench does not compile. Always check the *Transcript* window at the bottom for errors and warnings. In the screenshot below, for example, the error comes from a typo in the name of the counter module.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+26-ene.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-26-ene.png]]
 
 #### The ModelSim-Altera simulator
 
 ModelSim-Altera has several windows. At the bottom is the message window, where the simulator reports, for instance, errors found in the design's Verilog HDL files. Keep an eye on it: an error in the files prevents the project from loading and therefore from being simulated.
 
-<iframe src="/static/animaciones/Secuenciales/Verificaci%C3%B3n%20con%20Verilog%20HDL/ModelSim_general.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_general.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 On the left is the hierarchy viewer, which shows the structure of the design and all its files. In the upper centre is the signal viewer, with the signals of the module selected in the hierarchy. These signals can be added to the wave viewer on the right, which shows the simulation result. Every ModelSim window can be undocked and displayed on its own, which is especially handy for the wave viewer.
 
-<iframe src="/static/animaciones/Secuenciales/Verificaci%C3%B3n%20con%20Verilog%20HDL/ModelSim_desacoplo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_desacoplo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 The magnifying glasses in the top menu let you zoom into the results.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 17.09.20.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-17.09.20.png]]
 
 Initially ModelSim-Altera simulates until it reaches the `$stop` in the testbench. All signals are displayed and the counter value is shown in binary.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 16.39.47.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-16.39.47.png]]
 
 You can change how a signal is displayed: for example, to see the counter in unsigned decimal, right-click the signal and under **Radix** choose **Unsigned**.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 16.45.40.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-16.45.40.png]]
 
 The simulation buttons are in the menu bar. From left to right: **Restart** resets the simulation (useful after adding signals to the wave viewer, when you need to simulate again); next comes the box with the simulation time and, beside it, the **Run** button, which simulates for that time; the last button, **Stop**, halts the simulation.
 
-<iframe src="/static/animaciones/Secuenciales/Verificaci%C3%B3n%20con%20Verilog%20HDL/ModelSim_tiempo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_tiempo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 To repeat the simulation, click **Restart** and then **Run -All**: the simulation will stop at the testbench's `$stop`. You can also do this by typing the commands in the message window. Alternatively, set a time such as 300 ns and click **Run**: the simulation stops at 300 ns, because that instant comes before the `$stop`.
 
-<iframe src="/static/animaciones/Secuenciales/Verificaci%C3%B3n%20con%20Verilog%20HDL/ModelSim_restart.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_restart.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 #### Checking the results
 
 After the first simulation, modify the testbench to run a complete simulation of the counter that shows all of its operating cases. As a suggestion, change the input signals in step with the clock edges. The image shows an example simulation with the counter working in up and down modes.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 17.30.43.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-17.30.43.png]]
 
 > [!question] Have you tested every possible operating case of the counter?
 > Reset with and without *enable*, counting up and down, passing through the end count in both directions, and changing direction in the middle of a count.
 
 ## Subtask 2: Design of a shift register
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen04.png]]
+![[assets/secuenciales/estrutura_tarea/imagen04.png]]
 
 Describe in Verilog HDL a shift register with the following specifications:
 
@@ -220,7 +220,7 @@ Verify its operation with a simulation that covers every possible combination of
 
 Implement the following light sequence on the green LEDs LEDG7 to LEDG0 of the DE2-115 board:
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen06.png]]
+![[assets/secuenciales/estrutura_tarea/imagen06.png]]
 
 This design must reuse the parameterisable counter from subtask 1 and the shift register from subtask 2, as follows:
 
@@ -231,7 +231,7 @@ This design must reuse the parameterisable counter from subtask 1 and the shift 
 
 The top level of the hierarchy must be a Verilog HDL file that instantiates the counter and the shift register and contains the decoder code.
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen05.png]]
+![[assets/secuenciales/estrutura_tarea/imagen05.png]]
 
 > [!question]- Which `fin_cuenta` value gives one shift every 0.25 s?
 >> [!todo] With a 50 MHz clock (20 ns), 0.25 s / 20 ns = 12,500,000 cycles, so `fin_cuenta = 12_500_000` and `CLogB2` yields a 24-bit counter.
@@ -245,25 +245,25 @@ Verify the design with a ModelSim simulation. To do so, create a testbench as yo
 
 The simulation result should look like this screenshot:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+1.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-1.png]]
 
 The design is hierarchical and contains instances of a counter and a shift register. However, the simulation only shows the signals at the top level of the testbench, not the internal signals of these submodules. You will often want to see them, especially when debugging a design that does not work. Let us see how.
 
 Use the two subwindows on the left of ModelSim: *Structure* and *Objects*. In the first one you can unfold the complete hierarchy of the testbench and the design, with the name of each module and of each instance. In the image, the testbench **tb_lights** contains an instance of the design **lights** called `i1`. In turn, **lights** contains an instance of the counter module **contador** called `the_counter` and an instance of the register **shift7** called `the_shiftreg`.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+2.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-2.png]]
 
 When you select an instance in the hierarchy, the *Objects* window lists all the signals defined in that module. Select the ones you are interested in, right-click and choose **Add Wave** to add them to the waveform window (*Wave*):
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+3.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-3.png]]
 
 Although the signals now appear in the *Wave* window, their waveforms are not shown yet: they were not in the window when the simulation was launched, so ModelSim did not record them. To see them, run the simulation again from within ModelSim (without closing the window!) using the **Restart** and **Run -All** buttons, in that order:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+4.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-4.png]]
 
 **Restart** takes the simulation back to the start (t = 0) and **Run -All** runs it again until the testbench's `$stop`. The result is the screenshot below, where the counter's internal signals are finally visible:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+5.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-5.png]]
 
 > [!warning] Deliverable
 > Do the same to display the internal signals of the shift register and include a screenshot in your submission for this task.
@@ -274,15 +274,15 @@ Verify the design on the DE2-115 board. To do this, select the device (FPGA) on 
 
 The device is selected in **Assignments > Device...**: choose the **EP4CE115F29C7** from the Cyclone IV E family.
 
-![[assets/Secuenciales/Estrutura_Tarea/Captura de pantalla 2019-12-17 a las 10.14.49.png]]
+![[assets/secuenciales/estrutura_tarea/captura-de-pantalla-2019-12-17-a-las-10.14.49.png]]
 
 Pin assignment means telling the tools which FPGA pin each input and output of the design is connected to. First identify the design's inputs and outputs and their corresponding pins. The table contains the information you need:
 
-![[assets/Asignaciones_DE2_115/Captura de pantalla 2019-11-05 a las 13.13.13.png]]
+![[assets/asignaciones_de2_115/captura-de-pantalla-2019-11-05-a-las-13.13.13.png]]
 
 Pins are assigned in **Assignments > Pin Planner**. The upper part of the window shows the device package seen from below: the 780 pins of the Cyclone IV are arranged in a square grid whose rows are labelled with letters and columns with numbers. The lower part lists the design's inputs and outputs with their name (**Node Name**), direction (**Direction**), location (**Location**) and other data. The **Location** column is where you specify the pin each signal connects to. For example, the system clock (`CLOCK_50`) goes to the 50 MHz oscillator, which according to the table is connected to FPGA pin Y2, so you enter `PIN_Y2` in its **Location** column.
 
-![[assets/Secuenciales/Estrutura_Tarea/Captura de pantalla 2019-12-16 a las 17.18.47.png]]
+![[assets/secuenciales/estrutura_tarea/captura-de-pantalla-2019-12-16-a-las-17.18.47.png]]
 
 After assigning the pins, close the window and recompile with **Processing > Start Compilation**. The new compilation takes the pin assignments into account.
 
@@ -292,6 +292,6 @@ If **JTAG** is not selected in **Mode**, select it. If the USB-Blaster is not se
 
 The programmer window should now look like the image. Click **Start** to configure the FPGA and check the light effect on the board.
 
-![[assets/Secuenciales/Estrutura_Tarea/Captura de pantalla 2020-03-04 a las 10.12.34.png]]
+![[assets/secuenciales/estrutura_tarea/captura-de-pantalla-2020-03-04-a-las-10.12.34.png]]
 
-next > [[Task 2 - Control and display on a screen]]
+next > [[sdp/en/task2-screen-control|Task 2 - Control and display on a screen]]

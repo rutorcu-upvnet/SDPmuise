@@ -6,9 +6,9 @@ tags:
   - fsm
 ---
 
-prev > [[Tarea 2 - Control y visualización en una pantalla]]
+prev > [[sdp/es/tarea2-control-pantalla|Tarea 2 - Control y visualización en una pantalla]]
 
-En este proyecto se rediseña el juego de luces de la [[Tarea 1 - Diseño de sistemas secuenciales|Tarea 1]] mediante **máquinas de estados** y se le añade un control de velocidad con los pulsadores de la placa.
+En este proyecto se rediseña el juego de luces de la [[sdp/es/tarea1-sistemas-secuenciales|Tarea 1]] mediante **máquinas de estados** y se le añade un control de velocidad con los pulsadores de la placa.
 
 ## Objetivos
 
@@ -23,7 +23,7 @@ El proyecto se hace en tres pasos incrementales en los que se van añadiendo blo
 
 En todos los apartados se usan las mismas asignaciones de pines para las entradas y salidas:
 
-![[assets/Asignaciones_DE2_115/Captura de pantalla 2019-11-05 a las 15.29.31.png]]
+![[assets/asignaciones_de2_115/captura-de-pantalla-2019-11-05-a-las-15.29.31.png]]
 
 ## Tareas a realizar
 
@@ -39,11 +39,11 @@ En todos los apartados se usan las mismas asignaciones de pines para las entrada
 
 En el primer apartado se vuelve a implementar el juego de luces de la Tarea 1 con una máquina de estados. El esquema del circuito es el siguiente:
 
-![[assets/Disenyo FSM/2024/Proy3_Ap1.png]]
+![[assets/disenyo-fsm/2024/proy3_ap1.png]]
 
 El bloque ***FSM_lights*** es una máquina de **Moore de tipo Medvedev** que sustituye al contador Johnson y al decodificador de la Tarea 1. Debe tener **14 estados** y generar la secuencia de luces especificada, que se repite aquí:
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen06.png]]
+![[assets/secuenciales/estrutura_tarea/imagen06.png]]
 
 Se añade también un contador (***counter***) que actúa como divisor de frecuencia; puede ser el mismo de las tareas anteriores. Para la prueba en placa se usa un módulo de **5 000 000**, de forma que la señal TC tenga una frecuencia de **10 Hz**.
 
@@ -63,14 +63,14 @@ Prueba también el diseño en la placa para comprobar el movimiento de las luces
 
 En el segundo apartado se implementa el subsistema de control de velocidad. El diseño final tendrá dos pulsadores como entradas, para aumentar y disminuir la velocidad. El bloque consiste en un contador cuyo valor aumenta o disminuye en uno con cada pulsación del botón correspondiente; una máquina de estados comunica los botones con el contador, traduciendo cada pulsación en las señales de control adecuadas.
 
-![[assets/Disenyo FSM/2024/Proy3_Ap2.png]]
+![[assets/disenyo-fsm/2024/proy3_ap2.png]]
 
 El contador *counter* es el de los diseños anteriores, ahora con **módulo 16**. El bloque ***FSM_speed*** es una máquina de **Mealy** que genera las señales **ENABLE** y **UP_DOWN** del contador, de forma que al pulsar **KEY[1]** (conectado a KEY_UP) el contador aumente en 1 y al pulsar **KEY[2]** (conectado a KEY_DN) disminuya en 1. Ten en cuenta que:
 
 - Los botones son **activos a nivel bajo**: la señal vale 0 con el botón pulsado y 1 cuando no lo está.
 - El contador debe cambiar **una sola vez por pulsación**, aunque el botón se mantenga pulsado durante varios ciclos de reloj.
 
-![[assets/Disenyo FSM/2024/cronograma_mealy.png]]
+![[assets/disenyo-fsm/2024/cronograma_mealy.png]]
 
 Describe el diseño en Verilog y escribe un testbench que verifique su funcionamiento en simulación. Debe comprobar la respuesta en distintos casos de test, **incluyendo pulsaciones realistas** (que duran muchos ciclos de reloj), y estar bien estructurado, preferentemente con *tasks*. En el informe se valorará que las capturas de simulación **incluyan las variables de estado** (`state`/`next_state`, si procede).
 
@@ -80,7 +80,7 @@ Prueba también el diseño en la placa, conectando la salida de 4 bits del conta
 
 Por último se integran todos los bloques anteriores en el diseño completo, cuyo esquema es el de la figura:
 
-![[assets/Disenyo FSM/2024/Proy3_Ap3.png]]
+![[assets/disenyo-fsm/2024/proy3_ap3.png]]
 
 En esencia, se modifica el diseño del apartado 1 añadiendo un divisor de frecuencia adicional, el módulo ***counter_variable***: un contador de 4 bits de **módulo variable**. Es decir, el módulo *no es un parámetro*, que queda fijo al compilar, *sino una señal de entrada* cuyo valor puede cambiar durante el funcionamiento. Su entrada **END_COUNT** indica el valor máximo de la cuenta, de modo que el módulo es END_COUNT + 1. END_COUNT tomará un valor entre 0 y 15 generado por el control de velocidad del apartado 2: cuanto mayor sea, mayor es el módulo de *counter_variable* y más despacio se mueven las luces.
 
@@ -117,4 +117,4 @@ endmodule
 
 Describe el diseño completo en Verilog y verifícalo con un testbench; puedes basarte en los de los apartados anteriores para simular distintas pulsaciones y el efecto de la habilitación. Prueba también el diseño en la placa, conectando la salida del contador variable a los LEDs rojos **LEDR[7:4]** para ver su valor a la vez que el del contador del apartado 2.
 
-next > [[Tarea 3 - Diseño de máquinas de estados finitos]]
+next > [[sdp/es/tarea3-fsm-motor|Tarea 3 - Diseño de máquinas de estados finitos]]

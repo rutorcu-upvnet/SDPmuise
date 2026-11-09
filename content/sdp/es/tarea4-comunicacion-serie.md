@@ -7,7 +7,7 @@ tags:
   - fsm
 ---
 
-prev > [[Tarea 3 - Diseño de máquinas de estados finitos]]
+prev > [[sdp/es/tarea3-fsm-motor|Tarea 3 - Diseño de máquinas de estados finitos]]
 
 *Por Ricardo José Colom Palero*
 
@@ -16,7 +16,7 @@ En esta tarea se diseña una **interfaz de comunicación serie** para comunicars
 > [!warning] Test previo
 > Antes de abordar los diseños, estudia la información de esta página y responde al test correspondiente en PoliformaT.
 
-<iframe src="/static/animaciones/Dise%C3%B1o%20de%20una%20Comunicaci%C3%B3n%20Serie/Objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ## Objetivos
 
@@ -24,13 +24,13 @@ El objetivo de la práctica es aprender las características y el modo de uso de
 
 ## Pantalla táctil LTM
 
-![[assets/Diseño de una Comunicación Serie/Pantalla Táctil LTM/Imagen042.png]]
+![[assets/diseno-de-una-comunicacion-serie/pantalla-tactil-ltm/imagen042.png]]
 
 En esta práctica se usa la pantalla táctil LTM fabricada por Terasic para las placas del programa universitario de Altera, como la DE2-115. Es una pantalla de 4,3 pulgadas con relación de aspecto 15:9 y resolución de 800 × 480 píxeles de 24 bits, capaz de representar unos 16 millones de colores. Dispone de un convertidor analógico-digital que captura el punto de contacto.
 
 ### Estructura de la pantalla táctil LTM
 
-![[assets/Diseño de una Comunicación Serie/Estructura Pantalla Táctil LTM/Imagen043.png]]
+![[assets/diseno-de-una-comunicacion-serie/estructura-pantalla-tactil-ltm/imagen043.png]]
 
 En esta pantalla, la visualización y la captura del punto de contacto son totalmente independientes, lo que permite usar solo la captura del punto de contacto sin visualizar nada, como se hará en esta práctica. De la captura se encarga un convertidor analógico-digital (ADC).
 
@@ -38,7 +38,7 @@ En esta pantalla, la visualización y la captura del punto de contacto son total
 
 El **AD7843** de Analog Devices es un ADC de **12 bits** que proporciona las coordenadas X e Y del punto de contacto. Estas coordenadas se leen a través de su interfaz serie.
 
-![[assets/Diseño de una Comunicación Serie/Características _Touch_/Imagen044.png]]
+![[assets/diseno-de-una-comunicacion-serie/caracteristicas-_touch_/imagen044.png]]
 
 Tanto la interfaz serie de la pantalla como la del ADC están conectadas a la FPGA a través del conector de 40 pines. Por la limitación de pines del conector, ambas comparten algunas señales: el mismo reloj (**ADC_DCLK**) y la misma habilitación (**SCEN**). Para que las comunicaciones no interfieran, la habilitación del ADC está negada mediante un inversor: cuando la pantalla LCD está habilitada (SCEN a nivel bajo) el ADC está deshabilitado, y viceversa.
 
@@ -51,27 +51,27 @@ Además de estas dos líneas compartidas, la interfaz serie del ADC tiene:
 
 ### Diagrama de temporización
 
-![[assets/Diseño de una Comunicación Serie/Diagrama de Temporización/Imagen047.png]]
+![[assets/diseno-de-una-comunicacion-serie/diagrama-de-temporizacion/imagen047.png]]
 
 La figura muestra el diagrama de temporización del protocolo de comunicación con el ADC para obtener la coordenada X o la Y. La **FPGA es el maestro** (*master*) de la comunicación y el ADC el esclavo (*slave*). Por tanto, la FPGA genera la selección **SCEN**, la señal **ADC_DIN**, con la que envía el comando de solicitud de coordenada, y **ADC_DCLK**, que fija la velocidad de la comunicación y sincroniza los bits de ADC_DIN y ADC_DOUT. El resto de señales las genera el ADC.
 
 Aunque es la FPGA la que controla la comunicación, debe saber cuándo iniciarla: cuando algo toque la pantalla, cosa que el ADC indica mediante **ADC_PENIRQ_n**.
 
-![[assets/Diseño de una Comunicación Serie/Diagrama de Temporización/Imagen053.png]]
+![[assets/diseno-de-una-comunicacion-serie/diagrama-de-temporizacion/imagen053.png]]
 
 ADC_PENIRQ_n está normalmente a nivel alto y pasa a nivel bajo cuando se toca la pantalla con un lápiz o con el dedo. La FPGA debe vigilarla: cuando pase a nivel bajo, debe iniciar el protocolo de comunicación con el ADC para obtener las coordenadas.
 
 El protocolo empieza activando **SCEN** y generando **ADC_DCLK** y **ADC_DIN** según el diagrama temporal. Por ADC_DIN se envía un comando de control que solicita la coordenada X o la Y; la tabla muestra los comandos de cada una. Como son distintos, hacen falta **dos comunicaciones**, una para cada coordenada. Cuando el ADC recibe el comando, hace la conversión y transmite en serie los 12 bits de la coordenada por ADC_DOUT, sincronizados con ADC_DCLK.
 
-![[assets/Diseño de una Comunicación Serie/Diagrama de Temporización/Imagen055.png]]
+![[assets/diseno-de-una-comunicacion-serie/diagrama-de-temporizacion/imagen055.png]]
 
 ADC_DIN debe permanecer a nivel bajo cuando no se usa para transmitir el comando. Además, aunque su nombre pueda confundir, **ADC_DCLK no es propiamente una señal de reloj**: en reposo está a nivel bajo y solo oscila durante la comunicación, marcando la velocidad y la sincronización de los bits. Una secuencia de transmisión y recepción de una coordenada dura **24 periodos de ADC_DCLK**, con un periodo máximo de 0,1 ms y mínimo de 0,5 µs, es decir, una velocidad de entre **10 kbps y 2 Mbps**.
 
-![[assets/Diseño de una Comunicación Serie/Diagrama de Temporización/Imagen054.png]]
+![[assets/diseno-de-una-comunicacion-serie/diagrama-de-temporizacion/imagen054.png]]
 
 ## Planteamiento de la tarea
 
-<iframe src="/static/animaciones/Dise%C3%B1o%20de%20una%20Comunicaci%C3%B3n%20Serie/Estructura%20de%20la%20Tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/estructura-de-la-tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 La práctica consiste en diseñar una interfaz de comunicación serie. En este caso se aplica a una pantalla táctil: el diseño debe controlar el ADC que captura dónde se ha puesto un puntero o el dedo.
 
@@ -79,7 +79,7 @@ Se divide en **dos subtareas**: la primera es el diseño de la interfaz serie co
 
 ## Subtarea 1: Interfaz serie con el ADC
 
-![[assets/Diseño de una Comunicación Serie/Subtarea 1: Interface Serie del Convertidor ADC/Imagen045.png]]
+![[assets/diseno-de-una-comunicacion-serie/subtarea-1-interface-serie-del-convertidor-adc/imagen045.png]]
 
 Diseña la interfaz de comunicación serie con el ADC para obtener las coordenadas X e Y del punto de contacto. El diseño debe ajustarse a la temporización del AD7843 vista anteriormente. El bloque tendrá una entrada de reloj para el oscilador de 50 MHz, un reset activo a nivel bajo, las señales de comunicación con el ADC y dos buses de salida de 12 bits con las coordenadas X e Y.
 
@@ -88,35 +88,35 @@ Diseña la interfaz de comunicación serie con el ADC para obtener las coordenad
 
 ### Sugerencia: contador de semiciclos
 
-![[assets/Diseño de una Comunicación Serie/Sugerencia, contador semiciclos/Imagen048.png]]
+![[assets/diseno-de-una-comunicacion-serie/sugerencia-contador-semiciclos/imagen048.png]]
 
 Se puede usar un contador que lleve la cuenta de los **semiperiodos** necesarios para completar la secuencia de transmisión y recepción: en total **48 cuentas**, correspondientes a los semiperiodos de los 24 periodos de ADC_DCLK. Los cambios de cuenta sirven para generar ADC_DCLK y ADC_DIN y para capturar los bits recibidos por ADC_DOUT.
 
-![[assets/Diseño de una Comunicación Serie/Sugerencia, contador semiciclos/Imagen056.png]]
+![[assets/diseno-de-una-comunicacion-serie/sugerencia-contador-semiciclos/imagen056.png]]
 
 Fíjate especialmente en el instante en que se ponen los bits en **ADC_DIN**: deben cambiar al cambiar la cuenta del contador, coincidiendo con el **flanco de bajada** de ADC_DCLK. Por ejemplo, el bit A0 se pone en el cambio de la cuenta 5 a la 6 y dura las cuentas 6 y 7. El contador de semiperiodos es, por tanto, una buena referencia para generar tanto ADC_DCLK como ADC_DIN.
 
-![[assets/Diseño de una Comunicación Serie/Sugerencia, contador semiciclos/Imagen057.png]]
+![[assets/diseno-de-una-comunicacion-serie/sugerencia-contador-semiciclos/imagen057.png]]
 
 Los bits que envía el ADC por **ADC_DOUT** deben capturarse en el **punto medio** de cada bit, que es donde la línea está más estable: por ejemplo, el bit 9 en el cambio de la cuenta 22 a la 23 y el bit 8 entre las cuentas 24 y 25. La captura coincide con el **flanco de subida** de ADC_DCLK, aunque la referencia sean las cuentas del contador.
 
 ### Sugerencia: concatenación de las secuencias
 
-![[assets/Diseño de una Comunicación Serie/Sugerencia, concatenación/Imagen058.png]]
+![[assets/diseno-de-una-comunicacion-serie/sugerencia-concatenacion/imagen058.png]]
 
 Para obtener las dos coordenadas hay que hacer dos secuencias consecutivas de transmisión y recepción. Sin embargo, en cada secuencia hay tiempos de espera, así que se pueden eliminar **concatenando** las dos secuencias.
 
-![[assets/Diseño de una Comunicación Serie/Sugerencia, concatenación/Imagen059.png]]
+![[assets/diseno-de-una-comunicacion-serie/sugerencia-concatenacion/imagen059.png]]
 
 En el diagrama, la solicitud de la coordenada Y empieza cuando todavía se está recibiendo la X. Es posible porque las líneas de transmisión y recepción son independientes y se aprovecha el tiempo de espera del ADC. Así, la secuencia completa para las dos coordenadas dura solo **80 semiperiodos**.
 
-<iframe src="/static/animaciones/Dise%C3%B1o%20de%20una%20Comunicaci%C3%B3n%20Serie/Sugerencia%2C%20concatenaci%C3%B3n/Temporizacion_Tactil01.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/sugerencia-concatenacion/Temporizacion_Tactil01.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ### Propuesta de estructura del diseño
 
 Tomando como referencia la concatenación de las dos secuencias, se puede usar como propuesta el diagrama de bloques siguiente. Todos los bloques usan el reloj de 50 MHz y la señal de reset.
 
-<iframe src="/static/animaciones/Dise%C3%B1o%20de%20una%20Comunicaci%C3%B3n%20Serie/Propuesta%20estructura%20dise%C3%B1o/Diagrama_bloques_bi/Diagrama_bloques_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/propuesta-estructura-diseno/diagrama_bloques_bi/Diagrama_bloques_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 - A la izquierda, un contador de módulo **ADC_DCLK_CNT** (un parámetro) que fija la velocidad de transmisión entre 10 kbps y 2 Mbps. Además del fin de cuenta (TC), genera una señal que se activa a **mitad de la cuenta** (TC/2).
 - En el centro, el contador de **módulo 80**, referencia de los 80 semiperiodos de la secuencia completa.
@@ -130,7 +130,7 @@ En esta propuesta no se usa la línea **ADC_BUSY**.
 
 La máquina de estados que gestiona el protocolo no es única y puede hacerse de muchas formas. Esta es una propuesta; los dos diagramas representan la misma máquina con distinta notación (ASM y diagrama de estados).
 
-![[assets/Diseño de una Comunicación Serie/Propuesta FSM/Imagen060.png]]
+![[assets/diseno-de-una-comunicacion-serie/propuesta-fsm/imagen060.png]]
 
 Se trata de una máquina de cuatro estados:
 
@@ -141,19 +141,19 @@ Se trata de una máquina de cuatro estados:
 
 ### Verificación del diseño
 
-![[assets/Diseño de una Comunicación Serie/Verificación del Diseño/Imagen061.png]]
+![[assets/diseno-de-una-comunicacion-serie/verificacion-del-diseno/imagen061.png]]
 
 Una vez descrita en Verilog HDL la interfaz, y sin errores de compilación, hay que hacer la verificación funcional, es decir, simularla para comprobar que funciona correctamente.
 
 Simular la comunicación con el ADC generando las señales a mano sería complicado. Por eso se usa un **modelo funcional de la pantalla táctil** que emula la comunicación del ADC, **EMULE_ADC.vo**. La verificación se hace en ModelSim con un entorno de verificación escrito en Verilog HDL.
 
-Para facilitarlo se ha preparado el proyecto de Quartus [[assets/Diseño de una Comunicación Serie/Subtarea 2: Visualización del Punto de Contacto de la Pantalla/Touch_alumno.qar|Touch_alumno.qar]], ya configurado y con todos los archivos necesarios. Incluye el archivo **ADC_CONTROL.v**, la interfaz que hay que diseñar, vacío salvo por los puertos del módulo.
+Para facilitarlo se ha preparado el proyecto de Quartus [[assets/diseno-de-una-comunicacion-serie/subtarea-2-visualizacion-del-punto-de-contacto-de-la-pantalla/touch_alumno.qar|Touch_alumno.qar]], ya configurado y con todos los archivos necesarios. Incluye el archivo **ADC_CONTROL.v**, la interfaz que hay que diseñar, vacío salvo por los puertos del módulo.
 
 #### Testbench
 
 El entorno de verificación de Touch_alumno.qar tiene la estructura de la imagen. El testbench **tb_Touch_Control.v** es una descripción estructural que conecta el bloque que se verifica, **ADC_CONTROL.v**, con el emulador de la pantalla, **EMULE_ADC.vo**. Ambos están rodeados por **MFB.v**.
 
-<iframe src="/static/animaciones/Dise%C3%B1o%20de%20una%20Comunicaci%C3%B3n%20Serie/Verificaci%C3%B3n%20del%20Dise%C3%B1o/Diagrama_verificacion_bi/Diagrama_verificacion_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/verificacion-del-diseno/diagrama_verificacion_bi/Diagrama_verificacion_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 MFB genera el reloj y el reset. Después simula que se ha tocado la pantalla: da unas coordenadas X e Y al emulador y activa **NEW_COORD** para que empiece la emulación. El emulador pone a nivel bajo ADC_PENIRQ_n, a lo que ADC_CONTROL debe responder iniciando el protocolo; el emulador le envía entonces las coordenadas que le dio MFB.
 
@@ -161,24 +161,24 @@ Cuando ADC_CONTROL obtiene las coordenadas, MFB las compara con las que dio al e
 
 #### Procedimiento
 
-![[assets/Diseño de una Comunicación Serie/Procedimiento/Imagen035.png]]
+![[assets/diseno-de-una-comunicacion-serie/procedimiento/imagen035.png]]
 
 1. Descarga y descomprime el proyecto Touch_alumno.qar.
 2. Diseña la interfaz en el archivo **ADC_CONTROL.v**, que ya incluye los puertos del módulo. Este módulo debe ser siempre el **Top** de la jerarquía, porque es el diseño que se sintetiza en la FPGA. Los archivos tb_Touch_Control.v, MFB.v y EMULE_ADC.vo solo se usan para simular: no forman parte del diseño ni son sintetizables.
 3. Compila el diseño sin errores.
 4. Lanza la simulación con **Tools > Run Simulation Tool > RTL Simulation**. El proyecto ya está configurado, así que no hay que ajustar nada.
 
-![[assets/Diseño de una Comunicación Serie/Procedimiento/Imagen036.png]]
+![[assets/diseno-de-una-comunicacion-serie/procedimiento/imagen036.png]]
 
 #### Comprobación
 
-![[assets/Diseño de una Comunicación Serie/Comprobación/Imagen033.png]]
+![[assets/diseno-de-una-comunicacion-serie/comprobacion/imagen033.png]]
 
 Al lanzar la simulación se abre ModelSim. A la izquierda se ve la jerarquía del testbench y a la derecha las formas de onda de la interfaz con el ADC.
 
 La simulación se ejecuta automáticamente. Si el diseño funciona, en la consola aparece el mensaje «**Verificación del DUV correcta**».
 
-![[assets/Diseño de una Comunicación Serie/Comprobación/Imagen034.png]]
+![[assets/diseno-de-una-comunicacion-serie/comprobacion/imagen034.png]]
 
 Si no, puede ocurrir que:
 
@@ -192,19 +192,19 @@ Cuando la verificación sea correcta, pasa a la verificación física de ADC_CON
 
 ## Subtarea 2: Visualización del punto de contacto
 
-![[assets/Diseño de una Comunicación Serie/Subtarea 2: Visualización del Punto de Contacto de la Pantalla/Imagen052.png]]
+![[assets/diseno-de-una-comunicacion-serie/subtarea-2-visualizacion-del-punto-de-contacto-de-la-pantalla/imagen052.png]]
 
 La segunda subtarea es la verificación física del diseño anterior: probar ADC_CONTROL en la placa DE2-115 con la pantalla táctil de Terasic, obteniendo las coordenadas X e Y del punto tocado y mostrándolas en los **displays de 7 segmentos** en **hexadecimal**, con 12 bits por coordenada. La imagen muestra el valor de las coordenadas en cada esquina de la pantalla.
 
-![[assets/Diseño de una Comunicación Serie/Subtarea 2: Visualización del Punto de Contacto de la Pantalla/Imagen046.png]]
+![[assets/diseno-de-una-comunicacion-serie/subtarea-2-visualizacion-del-punto-de-contacto-de-la-pantalla/imagen046.png]]
 
 Necesitarás un **conversor de hexadecimal a 7 segmentos** que traduzca las coordenadas de ADC_CONTROL para mostrarlas en los displays.
 
 Por supuesto, hay que asignar los pines adecuados para conectar con la pantalla y probar el diseño en la placa:
 
-![[assets/Asignaciones_DE2_115/Captura de pantalla 2019-11-05 a las 15.30.53.png]]
+![[assets/asignaciones_de2_115/captura-de-pantalla-2019-11-05-a-las-15.30.53.png]]
 
-![[assets/Asignaciones_DE2_115/Captura de pantalla 2019-11-05 a las 15.32.44.png]]
+![[assets/asignaciones_de2_115/captura-de-pantalla-2019-11-05-a-las-15.32.44.png]]
 
 ### Verificación física del diseño
 
@@ -214,7 +214,7 @@ Una vez configurada la placa, la primera prueba que se suele hacer es tocar la p
 
 Como condición de disparo para capturar la comunicación se puede usar el flanco de bajada de ADC_PENIRQ_n o que el contador de semiperiodos tome un valor concreto, por ejemplo 5. Ambas permiten obtener una captura como esta:
 
-![[assets/Diseño de una Comunicación Serie/SignalTap/datos02.jpg]]
+![[assets/diseno-de-una-comunicacion-serie/signaltap/datos02.jpg]]
 
 Como se ve, no solo se capturan las entradas y salidas, sino también el contador que sincroniza la comunicación.
 
@@ -227,11 +227,11 @@ En el ejemplo anterior solo se ve un toque. A veces interesa capturar varios, pe
 
 La imagen muestra una captura con esa configuración, detenida tras 6 o 7 toques para no alargar la adquisición:
 
-![[assets/Diseño de una Comunicación Serie/SignalTap/captura_serie_storage_a.jpg]]
+![[assets/diseno-de-una-comunicacion-serie/signaltap/captura_serie_storage_a.jpg]]
 
 Ampliando la imagen se ve que hay varias capturas del punto de toque y que cada cuenta del contador parece durar un solo ciclo de reloj: simplemente no se guarda toda la información capturada.
 
-![[assets/Diseño de una Comunicación Serie/SignalTap/captura_serie_storage_b.jpg]]
+![[assets/diseno-de-una-comunicacion-serie/signaltap/captura_serie_storage_b.jpg]]
 
 ### Comprobación y mejora del diseño
 
@@ -244,7 +244,7 @@ Una vez comprobada la comunicación serie, termina la verificación comprobando 
 1. **La velocidad de comunicación.** Puede estar entre 10 kbps y 2 Mbps; en el diseño propuesto la fija el parámetro **ADC_DCLK_CNT**, inicialmente en unos 70 kbps. Variándolo se puede minimizar el efecto, aunque puede no bastar y haya que combinarlo con el siguiente ajuste.
 2. **Una pausa entre dos adquisiciones consecutivas**, para que el ADC no convierta continuamente. Al tocar la pantalla se adquieren las coordenadas, y no se hace una nueva comunicación hasta que pase al menos **medio segundo**, aunque el dedo siga tocando. Así hay menos lecturas y se evitan las erróneas. El inconveniente es que hay que modificar ligeramente el diseño para añadir un elemento que genere esa espera, de medio segundo o de un valor ajustable.
 
-<iframe src="/static/animaciones/Dise%C3%B1o%20de%20una%20Comunicaci%C3%B3n%20Serie/Verificaci%C3%B3n%20y%20Mejora%20del%20Dise%C3%B1o/Diagrama_bloques_mejora_bi/Diagrama_bloques_mejora_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/diseno-de-una-comunicacion-serie/verificacion-y-mejora-del-diseno/diagrama_bloques_mejora_bi/Diagrama_bloques_mejora_bi.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Para reducir el número de lecturas se propone añadir al diseño un contador de **módulo 25 000 000**, que con el reloj de 50 MHz introduce un retardo de medio segundo entre una lectura y la siguiente. Está en la parte inferior izquierda del nuevo diagrama de bloques.
 
@@ -252,8 +252,8 @@ Este contador obliga a modificar la máquina de estados de ADC_CONTROL. Lo ideal
 
 El diagrama de bloques muestra las entradas y salidas adicionales que necesita la máquina, y la figura muestra el diagrama de estados con el nuevo estado.
 
-![[assets/Diseño de una Comunicación Serie/Verificación y Mejora del Diseño/Imagen065.png]]
+![[assets/diseno-de-una-comunicacion-serie/verificacion-y-mejora-del-diseno/imagen065.png]]
 
 Después, ajusta el módulo del contador para obtener el retardo más adecuado según la velocidad de transmisión.
 
-next > [inicio](sdp/es/index)
+next > [[sdp/es/index|inicio]]

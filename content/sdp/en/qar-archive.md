@@ -5,7 +5,7 @@ tags:
   - tools
 ---
 
-prev > [[Quartus installation]]
+prev > [[sdp/en/quartus-installation|Quartus installation]]
 
 *By Ricardo José Colom Palero*
 
@@ -16,12 +16,12 @@ However, Quartus includes a utility that packs the project into a single file wi
 ## Procedure
 
 1. In the Quartus menu, select **Project > Archive Project**. The **Archive Project** window opens:
-   ![[assets/Generar QAR/Imagen009.jpg]]
+   ![[assets/generar-qar/imagen009.jpg]]
 2. Enter a name for the file in the **Archive file name** field.
 3. Click **Advanced...** to open the window where you can customise which files will be included:
-   ![[assets/Generar QAR/Imagen012.jpg]]
+   ![[assets/generar-qar/imagen012.jpg]]
 4. In **File set**, select the **Service request** preset:
-   ![[assets/Generar QAR/Imagen011.jpg]]
+   ![[assets/generar-qar/imagen011.jpg]]
 5. Click **OK** to return to the **Archive Project** window.
 6. Click **Archive**. The archive is created with the given name and the **.qar** extension and contains the project files. It is saved in the project directory unless you chose another location.
 
@@ -32,4 +32,4 @@ Once the **.qar** file has been created, it is a good idea to check its contents
 > [!danger] Do not unpack it in the original project folder
 > Copy the **.qar** file to another folder and double-click it: Quartus will open, unpack the project into a folder named `project_name_restored` and open it.
 
-next > [[Task 1 - Design of sequential systems]]
+next > [[sdp/en/task1-sequential-systems|Task 1 - Design of sequential systems]]

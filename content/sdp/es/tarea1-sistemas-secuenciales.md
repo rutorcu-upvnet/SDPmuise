@@ -6,7 +6,7 @@ tags:
   - secuenciales
 ---
 
-prev > [[Crear QAR]]
+prev > [[sdp/es/crear-qar|Crear QAR]]
 
 *Por Ricardo José Colom Palero*
 
@@ -15,7 +15,7 @@ En esta tarea se plantean las bases para el desarrollo de la primera práctica d
 > [!warning] Test previo
 > Antes de empezar la tarea hay que realizar en PoliformaT el test sobre sintaxis de Verilog HDL, que sirve para evaluar los conocimientos previos.
 
-<iframe src="/static/animaciones/Secuenciales/Objetivos/Objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/objetivos/Objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ## Objetivos
 
@@ -25,7 +25,7 @@ Se diseñarán elementos digitales en Verilog HDL, avanzando en el uso de la jer
 
 ## Estructura de la tarea
 
-<iframe src="/static/animaciones/Secuenciales/Estrutura_Tarea/Estructura_Tarea.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/estrutura_tarea/Estructura_Tarea.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Todo sistema secuencial está gobernado por una señal de reloj, que procede de un oscilador externo al dispositivo en el que se implementa el diseño. El oscilador de la placa DE2-115 tiene una frecuencia de **50 MHz**, es decir, un periodo de **20 ns**. Cuando se diseñan circuitos que controlan elementos de visualización, hay que tener en cuenta que el ojo humano no percibe cambios que duren menos de unos 50 ms. Por tanto, no se puede usar directamente el reloj de 50 MHz para producir cambios que deban ser visibles, como hacer parpadear un LED.
 
@@ -39,7 +39,7 @@ La práctica se estructura en tres subtareas:
 
 ## Subtarea 1: Diseño de un contador parametrizable
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen02.png]]
+![[assets/secuenciales/estrutura_tarea/imagen02.png]]
 
 Describe en Verilog HDL un contador binario con las siguientes características:
 
@@ -59,13 +59,13 @@ Un diseñador eficiente debe aprovechar el tiempo que dedica a sus diseños, y p
 
 La mejor solución es tener **un solo archivo** con el modelo del contador, escrito en función de un parámetro de configuración que se cambia según las necesidades.
 
-A veces hay que hacer operaciones matemáticas con el parámetro antes de usarlo. Por ejemplo, ¿cómo se obtiene el número de bits del contador a partir de su módulo? La solución es usar una función. La figura muestra cómo hacerlo con la función `CLogB2`, que calcula el logaritmo en base 2 **redondeado al entero superior**, es decir, el número de bits necesarios para alcanzar el fin de cuenta. `CLogB2` está definida en el fichero de funciones matemáticas [[assets/Secuenciales/Estrutura_Tarea/MathFun.vh|MathFun.vh]], que hay que incluir en el diseño.
+A veces hay que hacer operaciones matemáticas con el parámetro antes de usarlo. Por ejemplo, ¿cómo se obtiene el número de bits del contador a partir de su módulo? La solución es usar una función. La figura muestra cómo hacerlo con la función `CLogB2`, que calcula el logaritmo en base 2 **redondeado al entero superior**, es decir, el número de bits necesarios para alcanzar el fin de cuenta. `CLogB2` está definida en el fichero de funciones matemáticas [[assets/secuenciales/estrutura_tarea/mathfun.vh|MathFun.vh]], que hay que incluir en el diseño.
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen08.png]]
+![[assets/secuenciales/estrutura_tarea/imagen08.png]]
 
 ### Verificación del diseño
 
-![[assets/Control Pantalla/Verificación del Diseño/Imagen061.png]]
+![[assets/control-pantalla/verificacion-del-diseno/imagen061.png]]
 
 Una vez descrito en Verilog HDL el módulo `count`, hay que verificar mediante simulación que el contador funciona correctamente y que genera bien la cuenta y la señal de fin de cuenta.
 
@@ -75,7 +75,7 @@ Para ello se usa un simulador profesional, **ModelSim-Altera**, que necesita un 
 
 Antes de simular, comprueba que la ruta de instalación de ModelSim-Altera está bien configurada en Quartus. En **Tools > Options…**, selecciona **General > EDA Tool Options** en la columna **Category**. En la lista de herramientas, la ruta de ModelSim-Altera debe ser `C:\intelFPGA\17.1\modelsim_ase\win32aloem` o equivalente.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2019-12-16 a las 17.25.53.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2019-12-16-a-las-17.25.53.png]]
 
 #### Creación de los estímulos con Verilog HDL
 
@@ -135,73 +135,73 @@ Guárdalo con **File > Save as...** con el nombre `tb_count.v`. Este archivo **n
 
 A continuación configura la simulación para que encuentre el archivo de estímulos. En **Assignments > Settings**, selecciona **Simulation** en la columna izquierda:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-09-17 a las 11.53.02.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-09-17-a-las-11.53.02.png]]
 
 Pulsa el botón **Test Benches...**, a media altura en el margen derecho. Se abre una nueva ventana...
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-09-17 a las 11.53.11.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-09-17-a-las-11.53.11.png]]
 
 ...en la que hay que pulsar **New** para añadir un testbench nuevo, configurado como en la imagen:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 15.28.34.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-15.28.34.png]]
 
 Vuelve aceptando con **OK** en cada ventana.
 
 Solo queda lanzar la simulación con ModelSim-Altera mediante **Tools > Run Simulation Tool > RTL Simulation**, que simula el código RTL antes de la síntesis y la implementación.
 
-![[assets/Control Pantalla/Realizar la Simulacion/Imagen116.png]]
+![[assets/control-pantalla/realizar-la-simulacion/imagen116.png]]
 
 Se abre ModelSim-Altera y comienza la simulación descrita en el testbench. En este caso se detiene al llegar al `$stop`, unos 24 ciclos de reloj después de habilitar la cuenta, de modo que se ve cómo el contador evoluciona desde 0 hasta 19 y vuelve a 0.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 15.33.02.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-15.33.02.png]]
 
 > [!warning] Revisa siempre la ventana *Transcript*
 > ModelSim también da errores si el testbench no compila. Revisa siempre la ventana *Transcript*, en la parte inferior, para ver errores y *warnings*. En la captura siguiente, por ejemplo, el error se debe a haber escrito mal el nombre del módulo contador.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+26-ene.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-26-ene.png]]
 
 #### El simulador ModelSim-Altera
 
 ModelSim-Altera tiene varias ventanas. En la parte inferior está la ventana de mensajes, donde el simulador informa, por ejemplo, de los errores detectados en los archivos Verilog HDL del diseño. Conviene revisarla, porque un error en los archivos impide cargar el proyecto y, por tanto, simular.
 
-<iframe src="/static/animaciones/Secuenciales/Verificaci%C3%B3n%20con%20Verilog%20HDL/ModelSim_general.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_general.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 A la izquierda está el visor de jerarquía, que muestra la estructura del diseño y todos sus archivos. En la parte central superior está el visor de señales, con las señales del módulo seleccionado en la jerarquía. Estas señales se pueden añadir al visor de ondas, a la derecha, donde se muestra el resultado de la simulación. Todas las ventanas de ModelSim se pueden desacoplar y mostrar por separado, lo que es especialmente útil con el visor de ondas.
 
-<iframe src="/static/animaciones/Secuenciales/Verificaci%C3%B3n%20con%20Verilog%20HDL/ModelSim_desacoplo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_desacoplo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Las lupas del menú superior permiten hacer zoom sobre los resultados.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 17.09.20.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-17.09.20.png]]
 
 Inicialmente ModelSim-Altera simula hasta encontrar el `$stop` del testbench. Se muestran todas las señales y se ve la cuenta del contador en binario.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 16.39.47.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-16.39.47.png]]
 
 Se puede cambiar la representación de una señal: por ejemplo, para ver el contador en decimal sin signo, haz clic derecho sobre la señal y en **Radix** elige **Unsigned**.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 16.45.40.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-16.45.40.png]]
 
 En la barra de menú están los botones de simulación. De izquierda a derecha: **Restart** reinicia la simulación (útil cuando se añaden señales al visor de ondas y hay que volver a simular); a continuación está la casilla con el tiempo de simulación y, a su lado, el botón **Run**, que simula durante ese tiempo; el último botón, **Stop**, detiene la simulación.
 
-<iframe src="/static/animaciones/Secuenciales/Verificaci%C3%B3n%20con%20Verilog%20HDL/ModelSim_tiempo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_tiempo.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Para repetir la simulación pulsa **Restart** y después **Run -All**: la simulación se detendrá en el `$stop` del testbench. Estas operaciones también se pueden hacer escribiendo los comandos en la ventana de mensajes. También se puede fijar un tiempo, por ejemplo 300 ns, y pulsar **Run**: la simulación se detendrá a los 300 ns, porque ese instante es anterior al `$stop`.
 
-<iframe src="/static/animaciones/Secuenciales/Verificaci%C3%B3n%20con%20Verilog%20HDL/ModelSim_restart.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="../../static/animaciones/secuenciales/verificacion-con-verilog-hdl/ModelSim_restart.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 #### Comprobación de resultados
 
 Tras la primera simulación, modifica el testbench para hacer una simulación completa del contador en la que se vean todos sus casos de funcionamiento. Como sugerencia, sincroniza los cambios de las señales de entrada con los flancos del reloj. La imagen muestra un ejemplo de simulación con el contador funcionando en modo ascendente y descendente.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura de pantalla 2018-12-11 a las 17.30.43.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-de-pantalla-2018-12-11-a-las-17.30.43.png]]
 
 > [!question] ¿Has evaluado todos los casos posibles de funcionamiento del contador?
 > Reset con y sin *enable*, cuenta ascendente y descendente, paso por el fin de cuenta en ambos sentidos y cambio de sentido a mitad de cuenta.
 
 ## Subtarea 2: Diseño de un registro de desplazamiento
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen04.png]]
+![[assets/secuenciales/estrutura_tarea/imagen04.png]]
 
 Describe en Verilog HDL un registro de desplazamiento con las siguientes características:
 
@@ -220,7 +220,7 @@ Verifica su funcionamiento mediante una simulación que contemple todas las comb
 
 Realiza en los LEDs verdes LEDG7 a LEDG0 de la placa DE2-115 el siguiente juego de luces:
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen06.png]]
+![[assets/secuenciales/estrutura_tarea/imagen06.png]]
 
 En este diseño debes reutilizar el contador parametrizable de la subtarea 1 y el registro de desplazamiento de la subtarea 2, con las siguientes consideraciones:
 
@@ -231,7 +231,7 @@ En este diseño debes reutilizar el contador parametrizable de la subtarea 1 y e
 
 El nivel superior de la jerarquía debe ser un fichero Verilog HDL que instancie el contador y el registro de desplazamiento y que contenga el código del decodificador.
 
-![[assets/Secuenciales/Estrutura_Tarea/Imagen05.png]]
+![[assets/secuenciales/estrutura_tarea/imagen05.png]]
 
 > [!question]- ¿Qué valor de `fin_cuenta` hay que usar para desplazar cada 0,25 s?
 >> [!todo] Con un reloj de 50 MHz (20 ns), 0,25 s / 20 ns = 12 500 000 ciclos, así que `fin_cuenta = 12_500_000` y `CLogB2` da un contador de 24 bits.
@@ -245,25 +245,25 @@ Verifica el diseño mediante una simulación en ModelSim. Para ello crea un test
 
 El resultado de la simulación debería parecerse a esta captura:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+1.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-1.png]]
 
 El diseño es jerárquico y contiene instancias de un contador y de un registro de desplazamiento. Sin embargo, en la simulación solo vemos las señales del nivel superior del testbench, no las señales internas de estos submódulos. A menudo querremos verlas, sobre todo para depurar un diseño que no funciona. Veamos cómo hacerlo.
 
 Se usan las dos subventanas de la parte izquierda de ModelSim: *Structure* y *Objects*. En la primera se puede desplegar la jerarquía completa del testbench y del diseño, con el nombre de cada módulo y el de cada instancia. En la imagen, el testbench **tb_lights** contiene una instancia del diseño **lights** llamada `i1`. A su vez, **lights** contiene una instancia del contador **contador** llamada `the_counter` y una del registro **shift7** llamada `the_shiftreg`.
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+2.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-2.png]]
 
 Al seleccionar una instancia en la jerarquía, la ventana *Objects* muestra todas las señales definidas en ese módulo. Selecciona las que te interesen, haz clic derecho y elige **Add Wave** para añadirlas a la ventana de formas de onda (*Wave*):
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+3.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-3.png]]
 
 Aunque las señales ya aparecen en la ventana *Wave*, todavía no se ven sus formas de onda: no estaban en la ventana cuando se lanzó la simulación, así que ModelSim no las registró. Para verlas hay que volver a simular desde ModelSim (¡sin cerrar la ventana!) con los botones **Restart** y **Run -All**, en este orden:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+4.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-4.png]]
 
 **Restart** devuelve la simulación al instante inicial (t = 0) y **Run -All** la ejecuta de nuevo hasta el `$stop` del testbench. El resultado es el de la captura, donde por fin se ven las señales internas del contador:
 
-![[assets/Secuenciales/Verificación con Verilog HDL/Captura+ST1-3+5.png]]
+![[assets/secuenciales/verificacion-con-verilog-hdl/captura-st1-3-5.png]]
 
 > [!warning] Entrega
 > Haz lo mismo para ver las señales internas del registro de desplazamiento y añade una captura de pantalla a la entrega de la tarea.
@@ -274,15 +274,15 @@ Verifica el diseño en la placa DE2-115. Para ello hay que seleccionar el dispos
 
 El dispositivo se selecciona en **Assignments > Device...**: elige el **EP4CE115F29C7** de la familia Cyclone IV E.
 
-![[assets/Secuenciales/Estrutura_Tarea/Captura de pantalla 2019-12-17 a las 10.14.49.png]]
+![[assets/secuenciales/estrutura_tarea/captura-de-pantalla-2019-12-17-a-las-10.14.49.png]]
 
 La asignación de pines consiste en indicar a qué pin de la FPGA se conecta cada entrada y salida del diseño. Primero hay que identificar las entradas y salidas del diseño y los pines que les corresponden. La tabla recoge la información necesaria:
 
-![[assets/Asignaciones_DE2_115/Captura de pantalla 2019-11-05 a las 13.13.13.png]]
+![[assets/asignaciones_de2_115/captura-de-pantalla-2019-11-05-a-las-13.13.13.png]]
 
 Los pines se asignan en **Assignments > Pin Planner**. En la parte superior de la ventana se ve el encapsulado del dispositivo desde abajo: los 780 pines de la Cyclone IV se distribuyen en una matriz cuadrada cuyas filas se identifican con letras y las columnas con números. En la parte inferior aparece la lista de entradas y salidas del diseño con su nombre (**Node Name**), dirección (**Direction**), ubicación (**Location**) y otros datos. En la columna **Location** se indica el pin al que se conecta cada señal. Por ejemplo, el reloj del sistema (`CLOCK_50`) va al oscilador de 50 MHz, que según la tabla está conectado al pin Y2 de la FPGA, así que en su columna **Location** se escribe `PIN_Y2`.
 
-![[assets/Secuenciales/Estrutura_Tarea/Captura de pantalla 2019-12-16 a las 17.18.47.png]]
+![[assets/secuenciales/estrutura_tarea/captura-de-pantalla-2019-12-16-a-las-17.18.47.png]]
 
 Tras asignar los pines, cierra la ventana y vuelve a compilar con **Processing > Start Compilation**. La nueva compilación tendrá en cuenta los pines asignados.
 
@@ -292,6 +292,6 @@ Si el modo **JTAG** no está seleccionado en **Mode**, selecciónalo. Si el USB-
 
 La ventana del programador debe quedar como en la imagen. Pulsa **Start** para configurar la FPGA y comprueba el juego de luces en la placa.
 
-![[assets/Secuenciales/Estrutura_Tarea/Captura de pantalla 2020-03-04 a las 10.12.34.png]]
+![[assets/secuenciales/estrutura_tarea/captura-de-pantalla-2020-03-04-a-las-10.12.34.png]]
 
-next > [[Tarea 2 - Control y visualización en una pantalla]]
+next > [[sdp/es/tarea2-control-pantalla|Tarea 2 - Control y visualización en una pantalla]]

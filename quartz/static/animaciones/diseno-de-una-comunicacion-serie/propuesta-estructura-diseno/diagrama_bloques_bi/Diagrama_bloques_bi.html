@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Diagrama_bloques_bi</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color:#FFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=yes, width=800" />
+
+	<!-- end copy -->
+  </head>
+  <body>
+	<!-- copy these lines to your document: -->
+
+	<div id="diagramabloquesbi_hype_container" class="HYPE_document" style="margin:auto;position:relative;width:800px;height:494px;overflow:hidden;">
+		<script type="text/javascript" charset="utf-8" src="Diagrama_bloques_bi.hyperesources/diagramabloquesbi_hype_generated_script.js?4171"></script>
+	</div>
+
+	<!-- end copy -->
+	
+
+
+	<!-- text content for search engines: -->
+
+	<div style="display:none" aria-hidden=true>
+
+		<div>Contador de modulo ADC_DCLK_CNT, que permite fijar la velocidad de transmisión entre 10 kbps y 2 Mbps. Este contador tiene la particularidad, que genera una señal de fin de cuenta más otra señal que se activa a mitad de la cuenta.EndFragment    
+</div>
+		<div>Generador de la señal ADC_DIN, que lo hará en función de la cuenta del contador de semiperiodos.</div>
+		<div>Change language</div>
+		<div>Bloque encargado de la captura de los bits de la línea ADC_DOUT, emplea la cuenta de semiperiodos junto con la señal de mitad de cuenta del primer contador como habilitación.</div>
+		<div>Contador de modulo 80 que servirá como referencia para los 80 semiperiodos que dura la secuencia de comunicación para la obtención de ambas coordenadas.   
+</div>
+		<div>Maquina de estados finitos que se encarga del control de todo el diseño, generando las señales de habilitación necesarias. La maquina de estados es la que iniciará toda la secuencia de comunicación a partir de la línea ADC_PENIRQ_n, generando también la señal de selección SCEN.</div>
+		<div>Generador de la señal ADC_DCLK, para lo cual utilizará el fin de cuenta del primer contador.</div>
+		<div>Finite State Machine that controls the whole design by generating the necessary habilitation signals. The state machine will initiate the communication sequence according to the ADC_PENIRQ_n signals, and will also generate the selection signal SCEN.</div>
+		<div>Counter modulo ADC_DCLK_CNT, it will allow us to fix a transmission speed between 10 kbps and 2 Mbps. As a particularity, it generates a terminal count and an extra half-count signal that activates halfway through.</div>
+		<div>This block captures the bits on the ADC_DOUT line. It uses the half-period count as well as the half count signal from the first counter.</div>
+		<div>ADC_DIN signal generator, it will depend on the half-period counter value.</div>
+		<div>Counter modulo 80 that will act as a reference for the 80 half-periods needed to complete the combined communication sequence that obtains both coordinates.</div>
+		<div>ADC_DCLK signal generator, it uses the terminal count signal from the first counter.</div>
+		<div>Cambiar Idioma</div>
+
+	</div>
+
+	<!-- end text content: -->
+
+  </body>
+</html>

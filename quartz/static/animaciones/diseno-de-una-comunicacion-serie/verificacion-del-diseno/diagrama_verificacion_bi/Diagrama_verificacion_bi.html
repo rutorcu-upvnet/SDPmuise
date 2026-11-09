@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Diagrama_verificacion_bi</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color:#FFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=yes, width=800" />
+
+	<!-- end copy -->
+  </head>
+  <body>
+	<!-- copy these lines to your document: -->
+
+	<div id="diagramaverificacionbi_hype_container" class="HYPE_document" style="margin:auto;position:relative;width:800px;height:532px;overflow:hidden;">
+		<script type="text/javascript" charset="utf-8" src="Diagrama_verificacion_bi.hyperesources/diagramaverificacionbi_hype_generated_script.js?71546"></script>
+	</div>
+
+	<!-- end copy -->
+	
+
+
+	<!-- text content for search engines: -->
+
+	<div style="display:none" aria-hidden=true>
+
+		<div>Genera las señales del reloj CLK y de reset para los bloques. A continuación, actuará como si se hubiese tocado la pantalla, proporcionando unas coordenadas X e Y al emulador y activando la señal NEW_COORD para que inicie el proceso de emulación de la pantalla. Una vez el ADC_CONTROL obtenga las coordenadas X e Y, el MFB las comparará con las suministradas al emulador y si coinciden, enviará un mensaje a la consola del ModelSim indicando que la verificación es correcta. Si no coinciden enviará un mensaje de verificación fallida.</div>
+		<div>Bloque objeto de la verificación denominado ADC_CONTROL.v, que se conectará a la pantalla tactil para capturar las coordenadas X e Y.</div>
+		<div>Archivo de Testbench, que actúa como descripción estructural de los diferentes bloques que componen los archivos de la verificación.</div>
+		<div>Change language</div>
+		<div>Emulador de la pantalla táctil. consiste en un modelo funcional de la pantalla táctil, que realiza una emulación del comportamiento de la comunicación del ADC</div>
+		<div>Cambiar Idioma</div>
+		<div>MFB.v: Generates the clock and reset signals for the other blocks. After that, it will act as if the screen had been touched, providing the emulator with coordinates X and Y and activating the NEW_COORD signal to force the screen emulation process to start. Once ADC_CONTROL obtains the X and Y coordinates, the MFB with compare them withwith the ones originally provided to the emulator. If they agree, it will send a message to the ModelSim console acknowledging that verification is correct. If they don't, a failed verification message will be output instead.</div>
+		<div>ADC_CONTROL.v: Design block under verification. It will connect to the touchscreen in order to obtain coordinates X and Y.</div>
+		<div>EMULE_ADC.vo: Touchscreen emulator. It consists in a functional model of the touchscreen that emulates the behavior of the ADC communication interface.</div>
+		<div>Testbench file, which acts as a structural description of the different blocks that make up the verification files.</div>
+
+	</div>
+
+	<!-- end text content: -->
+
+  </body>
+</html>

@@ -12,7 +12,7 @@ prev > [[sdp/en/task3-lights-fsm|Task 3 - Upgraded lighting effect with FSMs]]
 
 This task lays the foundations for the lab on **finite state machines** (FSMs), using the design of a stepper motor controller as an example.
 
-<iframe src="../../static/animaciones/disenyo-fsm/objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/disenyo-fsm/objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ## Goals
 
@@ -76,7 +76,7 @@ In half-step and one-phase modes two more outputs are generated, **INH1** and **
 
 ## Structure of the task
 
-<iframe src="../../static/animaciones/disenyo-fsm/estructura_tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/disenyo-fsm/estructura_tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 The lab focuses on designing finite state machines with Verilog HDL; the chosen application is a stepper motor controller.
 
@@ -193,9 +193,9 @@ The new design must be verified with a testbench in ModelSim and on the DE2-115 
 
 The following figures show the proposed block diagram and a suggested sequence of steps:
 
-<iframe src="../../static/animaciones/disenyo-fsm/subtarea3/diagrama_bloques/Diagrama_bloques.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/disenyo-fsm/subtarea3/diagrama_bloques/Diagrama_bloques.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
-<iframe src="../../static/animaciones/disenyo-fsm/subtarea3/pasos/Pasos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/disenyo-fsm/subtarea3/pasos/Pasos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Verify the design by simulation, with a testbench that checks the response to different test cases (button presses, etc.).
 

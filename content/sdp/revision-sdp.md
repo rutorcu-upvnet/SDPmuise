@@ -10,7 +10,7 @@ Informe de la migración de las Tareas 1–4 y las ayudas de Quartus/QAR de Poli
 - `content/sdp/es/` y `content/sdp/en/`: una página por tarea (las subpáginas de PoliformaT pasan a ser secciones), más `index.md`, instalación de Quartus y creación de QAR.
 - Nombres de fichero en ASCII, minúsculas y sin espacios (`tarea1-sistemas-secuenciales.md`, `task1-sequential-systems.md`...). El título visible está en el *frontmatter*.
 - Enlaces internos como wikilinks con ruta completa (`[[sdp/es/tarea2-control-pantalla|Tarea 2 ...]]`).
-- Imágenes en `content/assets/<carpeta-ascii>/<fichero-ascii>`; animaciones en `quartz/static/animaciones/<carpeta-ascii>/<Fichero>.html`, incrustadas con ruta relativa (`../../static/...`) para que funcionen bajo `/SDPmuise/`.
+- Imágenes en `content/assets/<carpeta-ascii>/<fichero-ascii>`; animaciones en `quartz/static/animaciones/<carpeta-ascii>/<Fichero>.html`, incrustadas con URL absoluta (`https://rutorcu-upvnet.github.io/SDPmuise/static/...`), porque Quartz reescribe las rutas relativas de los iframes (minúsculas y sin `.html`).
 - La lista de recursos que faltan y el script para copiarlos están en `RECURSOS-PENDIENTES.md` y `scripts/importar-recursos.py`, en la raíz del repo.
 
 ## Pendiente antes de publicar

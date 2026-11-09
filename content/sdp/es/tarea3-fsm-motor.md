@@ -12,7 +12,7 @@ prev > [[sdp/es/tarea3-luces-fsm|Tarea 3 - Juego de luces mejorado con FSM]]
 
 En esta tarea se plantean las bases de la práctica dedicada al diseño de **máquinas de estados finitos** (FSM), tomando como ejemplo el diseño de un controlador para un motor paso a paso.
 
-<iframe src="../../static/animaciones/disenyo-fsm/objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/disenyo-fsm/objetivos/objetivos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 ## Objetivos
 
@@ -76,7 +76,7 @@ En los modos de medio paso y de una fase se generan además dos salidas, **INH1*
 
 ## Estructura de la tarea
 
-<iframe src="../../static/animaciones/disenyo-fsm/estructura_tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/disenyo-fsm/estructura_tarea/indice.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 La práctica se centra en el diseño de máquinas de estados finitos con Verilog HDL; como aplicación se ha elegido un controlador para un motor paso a paso.
 
@@ -193,9 +193,9 @@ El nuevo diseño debe verificarse con un testbench en ModelSim y en la placa DE2
 
 Las figuras siguientes muestran el diagrama de bloques propuesto y una sugerencia de pasos a seguir:
 
-<iframe src="../../static/animaciones/disenyo-fsm/subtarea3/diagrama_bloques/Diagrama_bloques.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/disenyo-fsm/subtarea3/diagrama_bloques/Diagrama_bloques.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
-<iframe src="../../static/animaciones/disenyo-fsm/subtarea3/pasos/Pasos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
+<iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/disenyo-fsm/subtarea3/pasos/Pasos.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
 Verifica el diseño mediante simulación, con un testbench que compruebe la respuesta en distintos casos de test (pulsaciones de botones, etc.).
 

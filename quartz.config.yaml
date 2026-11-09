@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: es-ES
-  baseUrl: rutorcu-upvnet.github.io/sdpmuise
+  baseUrl: rutorcu-upvnet.github.io/SDPmuise
   ignorePatterns:
     - private
     - templates

@@ -4,15 +4,15 @@ title: Programmable Digital Systems · Labs
 
 Lab sessions of the **Programmable Digital Systems** course (UPV). Designs are described in Verilog HDL, verified with ModelSim and tested on the DE2-115 board with Quartus.
 
-[Versión en español](sdp/es/index)
+[[sdp/es/index|Versión en español]]
 
 **Tools**
-- [[Quartus installation]]
-- [[Creating a QAR archive]]
+- [[sdp/en/quartus-installation|Quartus installation]]
+- [[sdp/en/qar-archive|Creating a QAR archive]]
 
 **Tasks**
-- [[Task 1 - Design of sequential systems]]
-- [[Task 2 - Control and display on a screen]]
-- [[Task 3 - Upgraded lighting effect with FSMs]]
-- [[Task 3 - Design of finite state machines]]
-- [[Task 4 - Design of a serial communication]]
+- [[sdp/en/task1-sequential-systems|Task 1 - Design of sequential systems]]
+- [[sdp/en/task2-screen-control|Task 2 - Control and display on a screen]]
+- [[sdp/en/task3-lights-fsm|Task 3 - Upgraded lighting effect with FSMs]]
+- [[sdp/en/task3-fsm-stepper|Task 3 - Design of finite state machines]]
+- [[sdp/en/task4-serial-communication|Task 4 - Design of a serial communication]]

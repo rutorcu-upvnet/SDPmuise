@@ -6,13 +6,12 @@ Lab sessions of the **Programmable Digital Systems** course (UPV). Designs are d
 
 [[sdp/es/index|Versión en español]]
 
-**Tools**
-- [[sdp/en/quartus-installation|Quartus installation]]
-- [[sdp/en/qar-archive|Creating a QAR archive]]
+**Help**
+- [[sdp/en/quartus-installation|Help: Quartus installation]]
+- [[sdp/en/qar-archive|Help: creating QAR files]]
 
-**Tasks**
-- [[sdp/en/task1-sequential-systems|Task 1 - Design of sequential systems]]
-- [[sdp/en/task2-screen-control|Task 2 - Control and display on a screen]]
-- [[sdp/en/task3-lights-fsm|Task 3 - Upgraded lighting effect with FSMs]]
-- [[sdp/en/task3-fsm-stepper|Task 3 - Design of finite state machines]]
-- [[sdp/en/task4-serial-communication|Task 4 - Design of a serial communication]]
+**Projects**
+- [[sdp/en/project1-lighting-effect|Project 1: Design of a lighting effect]]
+- [[sdp/en/project2-video-controller|Project 2: Design of a video controller]]
+- [[sdp/en/project3-lights-fsm|Project 3: Design of an upgraded lighting effect]]
+- [[sdp/en/project4-touchscreen|Project 4: Design of a touchscreen interface]]

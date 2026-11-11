@@ -6,13 +6,12 @@ Prácticas de la asignatura **Sistemas Digitales Programables** (UPV). Los dise�
 
 [[sdp/en/index|English version]]
 
-**Herramientas**
-- [[sdp/es/instalacion-quartus|Instalación de Quartus]]
-- [[sdp/es/crear-qar|Crear QAR]]
+**Ayudas**
+- [[sdp/es/instalacion-quartus|Ayuda: instalación de Quartus]]
+- [[sdp/es/crear-qar|Ayuda: creación de QAR]]
 
-**Tareas**
-- [[sdp/es/tarea1-sistemas-secuenciales|Tarea 1 - Diseño de sistemas secuenciales]]
-- [[sdp/es/tarea2-control-pantalla|Tarea 2 - Control y visualización en una pantalla]]
-- [[sdp/es/tarea3-luces-fsm|Tarea 3 - Juego de luces mejorado con FSM]]
-- [[sdp/es/tarea3-fsm-motor|Tarea 3 - Diseño de máquinas de estados finitos]]
-- [[sdp/es/tarea4-comunicacion-serie|Tarea 4 - Diseño de una comunicación serie]]
+**Proyectos**
+- [[sdp/es/proyecto1-juego-luces|Proyecto 1: Diseño de un juego de luces]]
+- [[sdp/es/proyecto2-controlador-video|Proyecto 2: Diseño de un controlador de vídeo]]
+- [[sdp/es/proyecto3-luces-fsm|Proyecto 3: Diseño de un juego de luces mejorado]]
+- [[sdp/es/proyecto4-pantalla-tactil|Proyecto 4: Diseño de un interfaz para pantalla táctil]]

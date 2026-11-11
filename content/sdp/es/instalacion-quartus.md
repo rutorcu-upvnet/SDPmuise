@@ -1,5 +1,5 @@
 ---
-title: Instalación de Quartus en tu ordenador
+title: "Ayuda: instalación de Quartus"
 draft: false
 tags:
   - herramientas
@@ -7,41 +7,40 @@ tags:
 
 prev > [[sdp/es/index|inicio]]
 
-*Por Ricardo José Colom Palero*
-
-Uno de los objetivos de esta asignatura es que todos los diseños digitales que se realicen no se verifiquen únicamente mediante simulación, sino que también se prueben físicamente sobre hardware. En el laboratorio disponemos de la placa de evaluación **DE2-115**, desarrollada por Terasic junto con Altera dentro de su programa universitario. Junto con el hardware se emplea el programa **Quartus** de Altera (hoy Intel FPGA) para la realización de los diseños digitales.
-
-La placa DE2-115 dispone de una FPGA de la familia **Cyclone IV E** de Altera, concretamente el dispositivo **EP4CE115F29C7**. En las prácticas se utiliza la versión **17.1.1 Internal Build 593** de Quartus, que ya está instalada en el laboratorio. A continuación se explica cómo conseguir esta misma versión para trabajar en tu ordenador sin problemas de compatibilidad.
+Para las prácticas de la asignatura se usa el software **Quartus** de Altera. En los ordenadores del laboratorio está instalada la versión **17.1.1 Internal Build 593**. Es posible (y recomendable) instalar esa misma versión en tu ordenador para trabajar también fuera del laboratorio sin problemas de compatibilidad. Esta página explica cómo hacerlo.
 
 ## Descarga
 
-El siguiente enlace lleva al centro de descargas de Intel FPGA: [Intel FPGA Download Center](https://www.intel.com/content/www/us/en/collections/products/fpga/software/downloads.html)
+El siguiente enlace lleva al centro de descargas de Altera: [Centro de descargas de Altera](https://www.intel.com/content/www/us/en/collections/products/fpga/software/downloads.html)
 
-![[assets/instalar-quartus/captura-de-pantalla-2022-09-15-a-las-15.30.48.png]]
+![[assets/instalar-quartus/captura-27-01-26-1.png]]
 
-En esa página se puede buscar «17.1» para reducir el número de opciones. Después hay que elegir **Intel Quartus Prime Lite Edition Design Software Version 17.1 for Windows** (o Linux, si es tu sistema operativo).
+En el desplegable de software elige **Quartus Prime Lite** y, en el siguiente, la **versión 17.1**, que es la que se usa en prácticas. En el último desplegable puedes elegir la versión para Windows o para Linux (no hay versión para Mac).
 
 > [!warning] Cuidado
 > Elige la edición **Lite**, que es gratuita, y no las ediciones **Standard** o **Pro**, que son de pago.
 
-![[assets/instalar-quartus/captura-de-pantalla-2022-09-15-a-las-15.41.16.png]]
+![[assets/instalar-quartus/captura-27-01-26-2.png]]
 
-En la pestaña **Multiple Download**, el botón *Download* descarga un archivo de 5,8 GB con la versión completa y gratuita de Quartus. Es la forma más sencilla de obtener el software, aunque incluye más componentes de los necesarios.
+## Paquetes recomendados
 
-Si el tamaño te parece excesivo, puedes descargar solo los paquetes que se van a usar desde la pestaña **Individual Files**. Como muestra la imagen, para las asignaturas de este grado basta con:
+El software completo incluye muchos componentes que no se usan en las asignaturas del grado, así que recomendamos descargar solo los necesarios. En la pestaña **Individual Files** pulsa **Download** en estos componentes:
 
-- Quartus Prime (includes Nios II EDS), 1,7 GB.
-- ModelSim-Intel FPGA Edition (includes Starter Edition), 1,1 GB.
-- Cyclone IV device support, 466,6 MB.
+- **Quartus Prime (includes Nios II EDS)**, 1,7 GB
+- **ModelSim-FPGA Edition (includes Starter Edition)**, 1,1 GB
+- **Cyclone IV device support**, 466,7 MB
 
-![[assets/instalar-quartus/captura-de-pantalla-2022-09-15-a-las-15.40.05.png]]
+Una vez descargados, instala haciendo doble clic sobre el fichero de Quartus (`QuartusLiteSetup-17.1.0.590-windows.exe`). Con las opciones por defecto se instalan automáticamente los tres componentes.
 
-## Instalación y actualización
+![[assets/instalar-quartus/captura-27-01-26-3.png]]
 
-Una vez descargados los archivos, instala Quartus siguiendo las instrucciones de la propia página web.
+> [!note] Alternativa: descarga completa
+> En la pestaña **Multiple Download**, el botón **Download** descarga un archivo de 5,8 GB con la versión completa y gratuita de Quartus, que se instala siguiendo las instrucciones de la misma página. Los inconvenientes son el mayor tamaño de la descarga y del software instalado, y que necesitarás un programa de descompresión (como WinRAR) para descomprimirlo antes de instalarlo.
 
-Para la versión 17.1 existe una actualización que lleva a la **17.1.1 Internal Build 593**, la misma del laboratorio. Se descarga desde la pestaña **Updates**, como se ve en la imagen; solo hay que seguir las instrucciones de la página para instalarla.
+## Actualización a la 17.1.1
 
-![[assets/instalar-quartus/captura-de-pantalla-2022-09-15-a-las-16.23.00.png]]
+Después de instalar la versión 17.1 hay que aplicar una actualización para llegar a la **17.1.1 Internal Build 593**, la misma del laboratorio. En la misma página de descarga, en la pestaña **Updates**, descarga el fichero **Quartus Prime Software v17.1 Update 1** (1,6 GB) y sigue las instrucciones de la página para instalarlo.
 
-next > [[sdp/es/crear-qar|Crear QAR]]
+![[assets/instalar-quartus/captura-27-01-26-4.png]]
+
+next > [[sdp/es/crear-qar|Ayuda: creación de QAR]]

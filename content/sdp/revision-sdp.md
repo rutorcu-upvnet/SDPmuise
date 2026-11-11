@@ -51,8 +51,8 @@ Todos van en *callouts*:
 
 ## Pendiente / dudas
 
-1. **Recursos nuevos**: 27 imágenes/ficheros, 2 animaciones y 5 vídeos (ver `RECURSOS-PENDIENTES.md`). Los vídeos deben pesar menos de 100 MB para GitHub.
-2. `char_rom.mif` y `char_rom-1.hex` se han reutilizado de la versión anterior (PoliformaT intercambió los sufijos); comprobar que coinciden.
+1. **Recursos**: copiados todos desde `SDP.zip` (11 de noviembre de 2026), incluidos los 5 vídeos (26–44 MB cada uno, por debajo del límite de GitHub). `char_rom.mif` y `char_rom-1.hex` se han sustituido por los de la versión nueva, que no coincidían con los antiguos.
+2. Los vídeos se sirven desde GitHub Pages con `<video>`; si el repositorio crece demasiado, convendría moverlos a un servicio externo (p. ej. Polimedia o YouTube).
 3. P1 y P3 remiten a «la técnica de la práctica Tutorial / Proyectos 0 y 1» para usar distintos divisores en simulación y en placa. La práctica Tutorial (Proyecto 0) no está en la web; conviene añadirla o explicar la técnica.
 4. P3 Apartado 2 enlaza el boletín de problemas del tema 4, que es un fichero interno de PoliformaT; se ha dejado como referencia sin enlace.
 5. P2: el **Screen Simulator** está en la barra lateral de PoliformaT; si debe usarse desde la web pública, hace falta su URL.
